@@ -6,7 +6,7 @@
 /*   By: fragamez <fragamez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 12:17:29 by fragamez          #+#    #+#             */
-/*   Updated: 2025/05/08 14:47:10 by fragamez         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:55:02 by fragamez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	find_min_pos(t_stack *stack)
 	int		i;
 	t_stack	*tmp;
 
-	if (!stack)
+	if (!stack || !stack->cont)
 		return (-1);
 	tmp = stack;
 	min = tmp->cont;
@@ -36,6 +36,52 @@ int	find_min_pos(t_stack *stack)
 		i++;
 	}
 	return (pos);
+}
+
+void	pa(t_stack **a, t_stack **b, int print)
+{
+	t_stack	*tmp;
+
+	if (!*b)
+		return ;
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = *a;
+	*a = tmp;
+	if (print)
+		write(1, "pa\n", 3);
+}
+
+void	pb(t_stack **a, t_stack **b, int print)
+{
+	t_stack	*tmp;
+
+	if (!*a)
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = *b;
+	*b = tmp;
+	if (print)
+		write(1, "pb\n", 3);
+}
+
+void	rra(t_stack **a, int print)
+{
+	t_stack	*tmp;
+	t_stack	*last;
+
+	if (!*a || !(*a)->next)
+		return ;
+	tmp = *a;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	last = tmp->next;
+	tmp->next = NULL;
+	last->next = *a;
+	*a = last;
+	if (print)
+		write(1, "rra\n", 4);
 }
 
 void	sort_five(t_stack **a, t_stack **b)

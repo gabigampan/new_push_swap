@@ -6,7 +6,7 @@
 /*   By: fragamez <fragamez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:56:42 by fragamez          #+#    #+#             */
-/*   Updated: 2025/05/08 15:11:14 by fragamez         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:26:00 by fragamez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	sort_three(t_stack **a)
 	int	mid;
 	int	bot;
 
+	if (!a || !(*a) || !(*a)->next || !(*a)->next->next)
+		return ;
 	top = (*a)->cont;
 	mid = (*a)->next->cont;
 	bot = (*a)->next->next->cont;

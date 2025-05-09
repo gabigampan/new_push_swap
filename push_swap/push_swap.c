@@ -6,7 +6,7 @@
 /*   By: fragamez <fragamez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:34:18 by fragamez          #+#    #+#             */
-/*   Updated: 2025/04/23 12:13:09 by fragamez         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:24:10 by fragamez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ int	is_all_num(char *str)
 	int	i;
 
 	i = 0;
+	if (!str[i])
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
 	while (str[i] != '\0')
 	{
-		if (i == 0 && str[i] == '-')
-			i++;
-		if (i == 0 && str[i] == '+')
-			i++;
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
-		else
-			i++;
+		i++;
 	}
 	return (1);
 }
@@ -51,17 +52,15 @@ int	check_all_unequal(int *array, int size)
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
+		j = i + 1;
 		while (j < size)
 		{
-			if ((i != j) && (array[i] == array[j]))
+			if (array[i] == array[j])
 				return (0);
-			else
-				j++;
+			j++;
 		}
-		j = 0;
 		i++;
 	}
 	return (1);

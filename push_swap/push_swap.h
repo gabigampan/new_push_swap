@@ -6,7 +6,7 @@
 /*   By: fragamez <fragamez@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:08:49 by fragamez          #+#    #+#             */
-/*   Updated: 2025/05/08 15:16:20 by fragamez         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:45:22 by fragamez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }					t_stack;
 
+void		sa(t_stack **a, int print);
+void		ra(t_stack **a, int print);
+void		rra(t_stack **a, int print);
+void		pb(t_stack **a, t_stack **b, int print);
+void		pa(t_stack **a, t_stack **b, int print);
 void		throw_error(t_stack *a, t_stack *b);
 void		throw_empty_error(void);
 t_stack		*new_stack(int *nbrs, int argc);
@@ -79,11 +84,6 @@ int			check_all_unequal(int *array, int size);
 long long	ft_atol(const char *str);
 void		move_min_to_b(t_stack **a, t_stack **b, int min_pos);
 int			find_next_min_position(t_stack *stack, int excluded_pos);
-void		sa(t_stack **a, int print);
-void		ra(t_stack **a, int print);
-void		rra(t_stack **a, int print);
-void		pb(t_stack **a, t_stack **b, int print);
-void		pa(t_stack **a, t_stack **b, int print);
 void		sort_three(t_stack **a);
 void		sort_five(t_stack **a, t_stack **b);
 void		move_min_to_b(t_stack **a, t_stack **b, int min_pos);
